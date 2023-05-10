@@ -39,8 +39,7 @@
     
     <script>
           	const tokenAddressFromURL = getParameterByName("address");
-window.alert(tokenAddressFromURL);
-            if (typeof tokenAddressFromURL !== 'undefined') {
+            if (tokenAddressFromURL !== '') {
 	document.getElementById("mintToken").style.display = "block";
 }
     </script>
