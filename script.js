@@ -483,9 +483,3 @@ if (ownerAddress !== signerAddress) {
 	return urlParams.get(name) || "";
   }
   
-  document.readyState(async function() {
-	const tokenAddressFromURL = getParameterByName("address");
-if (typeof tokenAddressFromURL !== 'undefined') {
-	document.getElementById("mintToken").style.display = "block";
-}
-  })

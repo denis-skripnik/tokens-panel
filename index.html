@@ -37,5 +37,11 @@
 
     </div>
     
+    <script>
+          	const tokenAddressFromURL = getParameterByName("address");
+if (typeof tokenAddressFromURL !== 'undefined') {
+	document.getElementById("mintToken").style.display = "block";
+}
+    </script>
 </body>
 </html>
