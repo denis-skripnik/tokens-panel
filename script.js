@@ -463,7 +463,7 @@ const tokenAddressFromURL = getParameterByName("address");
 if (typeof tokenAddressFromURL !== 'undefined') {
 	document.getElementById("mintToken").style.display = "block";
 }
-function mintToken() {
+async function mintToken() {
 	const mintAmount = ethers.utils.parseEther(document.getElementById("mint_amount").value);
   
 	const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
