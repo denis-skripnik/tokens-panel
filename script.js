@@ -439,6 +439,7 @@ async function createAsset(){
 	await switchNetwork();
 	let name = document.getElementById("name").value;
 	let symbol = document.getElementById("symbol").value;
+	symbol = symbol.toUpperCase();
 	let startSupplyInETH = document.getElementById("start_supply").value;
 	let maxSupplyInETH = document.getElementById("max_supply").value;
 	let startSupplyInWei = ethers.utils.parseEther(startSupplyInETH.toString())
@@ -450,9 +451,9 @@ async function createAsset(){
 if (typeof res.events[0] === 'undefined') return;
 	let tokenAddress = res.events[0].address;
 	let resultLog = document.getElementById("resultLog");
-    resultLog.innerText = `Token was created.
-Address: ${tokenAbi}:
-<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}">Go to mint</a>`;
+    resultLog.innerHTML = `<h3>Token was created.</h3>
+<p>Address: ${tokenAddress}:<br>
+<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}">Go to mint</a></p>`;
 }
 
 async function mintToken() {
