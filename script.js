@@ -49,7 +49,7 @@ const contractABI = [
 	}
 ]; // abi.
 
-const tokebABI = [
+const tokenAbi = [
 	{
 		"inputs": [
 			{
