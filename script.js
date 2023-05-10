@@ -453,7 +453,7 @@ if (typeof res.events[0] === 'undefined') return;
 	let resultLog = document.getElementById("resultLog");
     resultLog.innerHTML = `<h3>Token was created.</h3>
 <p>Address: ${tokenAddress}:<br>
-<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}">Go to mint</a></p>`;
+<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}" target="_blank">Go to mint</a></p>`;
 }
 
 async function mintToken() {
