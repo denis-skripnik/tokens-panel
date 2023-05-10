@@ -460,7 +460,7 @@ async function handleEvent(tokenAddress){
 }
 
 async function mintToken() {
-	const tokenAddressFromURL = getParameterByName("address");
+	const tokenAddress = getParameterByName("address");
 	const mintAmount = ethers.utils.parseEther(document.getElementById("mint_amount").value);
   
 	const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);

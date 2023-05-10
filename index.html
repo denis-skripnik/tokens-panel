@@ -25,21 +25,17 @@
         <p> Maximum supply</p>
         <input type="number" min = "1" id = "max_supply">
         <button onclick="createAsset()">Create token</button>
-	</div>
+        <p><b>Result:</b> <span id="resultLog"></p>
+        </div>
 	<div id="mintToken" style="display: none;">
         <h2>Mint token if you smart contract owner</h2>
         <p> Amount for mint</p>
         <input type="number" min = "1" id = "mint_amount">
-        <button onclick="mintToken()">Go!</button>
-
-        <button onclick="handleEvent()">event</button>
-        <p><b>Result:</b> <span id="resultLog"></p>
-
+        <button onclick="mintToken()">Mint</button>
     </div>
     
     <script>
           	const tokenAddressFromURL = getParameterByName("address");
-            window.alert(tokenAddressFromURL)
             if (tokenAddressFromURL !== '') {
 	document.getElementById("mintToken").style.display = "block";
 }
