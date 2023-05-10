@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meganet testnet tokens panel</title>
+    <link rel = "stylesheet" href = "style.css">
+    <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js"
+        type="application/javascript"></script>
+    <script src = "script.js"></script>
+
+</head>
+<body>
+    <h1> Tokens panel</h1>
+    <div>
+        <h2>Create token</h2>
+        <p>Name</p>
+        <input type="text" id = "name">
+        <p>Symbol</p>
+        <input type="text" id = "symbol">
+        <p> Initial supply</p>
+        <input type="number" min = "1" id = "startSupplyInEth">
+        <p> Maximum supply</p>
+        <input type="number" min = "1" id = "maxSupplyInEth">
+        <button onclick="createAsset()">Create token</button>
+	</div>
+	<div id=""mintToken" style="display: none;">
+        <h2>Mint token if you smart contract owner</h2>
+        <p> Amount for mint</p>
+        <input type="number" min = "1" id = "mint_amount">
+        <button onclick="mintToken()">Go!</button>
+
+        <button onclick="handleEvent()">event</button>
+        <p><b>Result:</b> <span id="resultLog"></p>
+
+    </div>
+    
+</body>
+</html>
