@@ -464,7 +464,7 @@ async function mintToken() {
 	const mintAmount = ethers.utils.parseEther(document.getElementById("mint_amount").value);
   
 	const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
-	const ownerAddress = await tokenContract.owner();  
+	const ownerAddress = await tokenContract.owner;
 if (ownerAddress !== signerAddress) {
 	window.alert('Вы не являетесь текущим владельцем смартконтракта токена.');
 	return;
