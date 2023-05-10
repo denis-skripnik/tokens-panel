@@ -459,11 +459,8 @@ async function handleEvent(tokenAddress){
     resultLog.innerText = JSON.stringify(queryResultRecent);
 }
 
-const tokenAddressFromURL = getParameterByName("address");
-if (typeof tokenAddressFromURL !== 'undefined') {
-	document.getElementById("mintToken").style.display = "block";
-}
 async function mintToken() {
+	const tokenAddressFromURL = getParameterByName("address");
 	const mintAmount = ethers.utils.parseEther(document.getElementById("mint_amount").value);
   
 	const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
@@ -486,3 +483,9 @@ if (ownerAddress !== signerAddress) {
 	return urlParams.get(name) || "";
   }
   
+  document.readyState(async function() {
+	const tokenAddressFromURL = getParameterByName("address");
+if (typeof tokenAddressFromURL !== 'undefined') {
+	document.getElementById("mintToken").style.display = "block";
+}
+  })
