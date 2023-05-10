@@ -448,7 +448,7 @@ async function createAsset(){
     const res = await result.wait();
     console.log(res);
     
-	await handleEvent(result.events.TokenCreated[0].args.tokenAddress);
+	await handleEvent(result.events[0].address);
 }
 
 async function handleEvent(tokenAddress){
