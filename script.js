@@ -465,7 +465,8 @@ async function mintToken() {
   
 	const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
 	const ownerAddress = await tokenContract.owner;
-if (ownerAddress !== signerAddress) {
+window.alert(ownerAddress);
+	if (ownerAddress !== signerAddress) {
 	window.alert('Вы не являетесь текущим владельцем смартконтракта токена.');
 	return;
 }
