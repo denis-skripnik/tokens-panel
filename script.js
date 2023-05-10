@@ -447,16 +447,12 @@ async function createAsset(){
     let result = await contract.createToken(name, symbol, startSupplyInWei, maxSupplyInWei);
     const res = await result.wait();
     console.log(res);
-    
-	await handleEvent(result.events[0].address);
-}
-
-async function handleEvent(tokenAddress){
-    await switchNetwork();
-	let queryResult =  await contract.queryFilter('TokenCreated', signerAddress, tokenAddress);
-    let queryResultRecent = queryResult[queryResult.length-1]
-    let resultLog = document.getElementById("resultLog");
-    resultLog.innerText = JSON.stringify(queryResultRecent);
+if (typeof res.events[0] === 'undefined') return;
+	let tokenAddress = res.events[0].address;
+	let resultLog = document.getElementById("resultLog");
+    resultLog.innerText = `Token was created.
+Address: ${tokenAbi}:
+<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}">Go to mint</a>`;
 }
 
 async function mintToken() {
