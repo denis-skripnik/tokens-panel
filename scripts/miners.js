@@ -1,5 +1,24 @@
-const contractAddress = "0xd0AD9184145e48220b5644b4Eb9199D26A033208";
+const contractAddress = "0xC7f183B79607f3eFaADde183FD26fA607fE13ca2";
 const contractABI = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "minerAddress",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "creatorAddress",
+				"type": "address"
+			}
+		],
+		"name": "MinerCreated",
+		"type": "event"
+	},
 	{
 		"inputs": [
 			{
@@ -46,19 +65,6 @@ const contractABI = [
 		"name": "createMiner",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "miner",
-		"outputs": [
-			{
-				"internalType": "contract Miner",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	}
 ]; // abi.
@@ -548,7 +554,7 @@ async function createMiner(){
     const res = await result.wait();
     console.log(res);
 if (typeof res.events[0] === 'undefined') return;
-	let tokenAddress = res.events[0].address;
+	let tokenAddress = res.events[0].minerAddress;
 	let resultLog = document.getElementById("resultLog");
     resultLog.innerHTML = `<h3>Miner was created.</h3>
 <p>Address: ${tokenAddress}:<br>
