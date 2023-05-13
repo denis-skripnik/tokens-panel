@@ -554,7 +554,7 @@ async function createMiner(){
     const res = await result.wait();
     console.log(res);
 if (typeof res.events[0] === 'undefined') return;
-	let tokenAddress = res.events[0].minerAddress;
+	let tokenAddress = res.events[0].args[0];
 	let resultLog = document.getElementById("resultLog");
     resultLog.innerHTML = `<h3>Miner was created.</h3>
 <p>Address: ${tokenAddress}:<br>
