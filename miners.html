@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meganet testnet tokens Miners</title>
+    <link rel = "stylesheet" href = "style.css">
+    <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js"
+        type="application/javascript"></script>
+    <script src = "scripts/miners.js"></script>
+
+</head>
+<body>
+    <h1> Tokens Miners</h1>
+    <p><a href="/" target="_blank">Panel</a>, <a href="/rockPaperScissors"" target="_blank">Game and faucet</a></p>
+    <div>
+        <h2>Create Miner</h2>
+        <p>Name</p>
+        <input type="text" id = "name">
+        <p>Symbol</p>
+        <input type="text" id = "symbol">
+        <p> The address of the token where the rewards will be awarded</p>
+        <input type="text" id = "rewardTokenAddress">
+        <p> First price</p>
+        <input type="number" min = "1" id = "firstPrice">
+                <p> How much percent to increase the cost of the next miner?</p>
+        <input type="number" min = "1" id = "increment">
+                <p> How many days to earn rewards?</p>
+        <input type="number" min = "1" id = "totalDays">
+                <p> The amount of the reward for 1 miner for 1 day</p>
+        <input type="number" min = "0.000000000000000001" id = "rewardPerDay">
+                <p> The amount of the Number of miners (total)</p>
+        <input type="number" min = "1" id = "totalMiners">
+		<button onclick="createMiner()">Create Miner</button>
+        <p><b>Result:</b> <span id="resultLog"></p>
+        </div>
+<div id="mintMiner" style="display: none;">
+        <h2>Mint Miner</h2>
+        <button onclick="mintMiner()">Mint</button>
+    </div>
+    <div id="getRewards" style="display: none;">
+        <h2>Get rewards</h2>
+        <button onclick="getRewards()">Mint</button>
+    </div>
+<h2>Author</h2>
+<p>Blind developer Denis Skripnik. Channel: <a href="https://t.me/blind_dev" target="_blank">@blind_dev</a><br>
+<a href="https://github.com/denis-skripnik/tokens-panel" target="_blank">Github</a></p>
+    <script>
+          	const tokenAddressFromURL = getParameterByName("address");
+            if (tokenAddressFromURL !== '') {
+	document.getElementById("mintMiner").style.display = "block";
+	document.getElementById("getRewards").style.display = "block";
+}
+    </script>
+</body>
+</html>
