@@ -508,7 +508,7 @@ provider.send("eth_requestAccounts", []).then(()=>{
 }
 )
 
-const targetNetworkId = '0x2328';
+const targetNetworkId = '0xd05';
 
 const checkNetwork = async () => {
 	if (window.ethereum) {
