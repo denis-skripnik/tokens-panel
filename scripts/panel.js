@@ -393,7 +393,7 @@ const provider = new ethers.providers.Web3Provider(window.ethereum, parseInt(cha
 let signer;
 let signerAddress;
 const event = "TokenCreated";
-var contractAddress = contracts[3333].contractAddress;
+var contractAddress = contracts[chain_id];
 
 provider.send("eth_requestAccounts", []).then(()=>{
     provider.listAccounts().then( async (accounts) => {
@@ -428,7 +428,7 @@ await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-	await provider.reset({
+	provider.reset({
         network: targetNetworkId,
       });
   };
