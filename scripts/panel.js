@@ -389,7 +389,7 @@ const tokenAbi = [
 	}
 ]; // Token ABI.
 
-const provider = new ethers.providers.Web3Provider(window.ethereum, 3333)
+const provider = new ethers.providers.Web3Provider(window.ethereum, parseInt(chain_id))
 let signer;
 let signerAddress;
 const event = "TokenCreated";
@@ -428,8 +428,8 @@ await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-	provider.reset({
-        network: chainId,
+	await provider.reset({
+        network: targetNetworkId,
       });
   };
 
