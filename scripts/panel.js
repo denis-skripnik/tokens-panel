@@ -1,4 +1,9 @@
-const contractAddress = "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD";
+const conf = {
+	3333: "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
+	167005: "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
+}
+var chain_id = 3333;
+
 const contractABI = [
 	{
 		"anonymous": false,
@@ -384,32 +389,24 @@ const tokenAbi = [
 	}
 ]; // Token ABI.
 
-const provider = new ethers.providers.Web3Provider(window.ethereum, 3333)//ChainID 97 Meganet testnet
+const provider = new ethers.providers.Web3Provider(window.ethereum, 3333)
 let signer;
 let signerAddress;
-let contract;
-
 const event = "TokenCreated";
+var contractAddress = conf[3333].contractAddress;
 
 provider.send("eth_requestAccounts", []).then(()=>{
     provider.listAccounts().then( async (accounts) => {
         signer = provider.getSigner(accounts[0]); //account in metamask
         signerAddress = await signer.getAddress();
 
-		contract = new ethers.Contract(
-            contractAddress,
-            contractABI,
-            signer
-        )
-     
+    
     }
     )
 }
 )
 
-const targetNetworkId = '0xd05';
-
-const checkNetwork = async () => {
+const checkNetwork = async (targetNetworkId) => {
 	if (window.ethereum) {
 	  const currentChainId = await window.ethereum.request({
 		method: 'eth_chainId',
@@ -422,21 +419,18 @@ const checkNetwork = async () => {
 	}
   };
 
-const switchNetwork = async () => {
-	const network_status = await checkNetwork();
+const switchNetwork = async (chainId) => {
+	const targetNetworkId = '0x' + chainId.toString(16);
+	const network_status = await checkNetwork(targetNetworkId);
 	if (network_status === true) return;
-	await window.ethereum.request({
+await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-	// refresh
-	window.location.reload();
+chain_id = chainId;
   };
 
-switchNetwork();
-
 async function createAsset(){
-	await switchNetwork();
 	let name = document.getElementById("name").value;
 	let symbol = document.getElementById("symbol").value;
 	symbol = symbol.toUpperCase();
@@ -444,6 +438,9 @@ async function createAsset(){
 	let maxSupplyInETH = document.getElementById("max_supply").value;
 	let startSupplyInWei = ethers.utils.parseEther(startSupplyInETH.toString())
 	let maxSupplyInWei = ethers.utils.parseEther(maxSupplyInETH.toString())
+
+	contractAddress = conf[chain_id].contractAddress;
+	const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
     let result = await contract.createToken(name, symbol, startSupplyInWei, maxSupplyInWei);
     const res = await result.wait();
