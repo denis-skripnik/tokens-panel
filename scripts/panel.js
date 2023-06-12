@@ -1,6 +1,6 @@
-const conf = {
-	3333: "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
-	167005: "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
+const contracts = {
+	"3333": "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
+	"167005": "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
 }
 var chain_id = 3333;
 
@@ -393,7 +393,7 @@ const provider = new ethers.providers.Web3Provider(window.ethereum, 3333)
 let signer;
 let signerAddress;
 const event = "TokenCreated";
-var contractAddress = conf[3333].contractAddress;
+var contractAddress = contracts[3333].contractAddress;
 
 provider.send("eth_requestAccounts", []).then(()=>{
     provider.listAccounts().then( async (accounts) => {
@@ -427,8 +427,7 @@ await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-chain_id = chainId;
-window.alert(chain_id);
+chain_id = chainId.toString();
   };
 
 async function createAsset(){
@@ -439,8 +438,7 @@ async function createAsset(){
 	let maxSupplyInETH = document.getElementById("max_supply").value;
 	let startSupplyInWei = ethers.utils.parseEther(startSupplyInETH.toString())
 	let maxSupplyInWei = ethers.utils.parseEther(maxSupplyInETH.toString())
-window.alert(chain_id);
-	contractAddress = conf[chain_id].contractAddress;
+	contractAddress = contracts[chain_id];
 	const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
     let result = await contract.createToken(name, symbol, startSupplyInWei, maxSupplyInWei);
