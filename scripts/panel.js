@@ -428,6 +428,9 @@ await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
+	provider.reset({
+        network: chainId,
+      });
   };
 
 async function createAsset(){
