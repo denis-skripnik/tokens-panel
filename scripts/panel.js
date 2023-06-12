@@ -428,7 +428,7 @@ await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-	provider = new ethers.providers.Web3Provider(window.ethereum, parseInt(chain_id));
+	provider = new ethers.providers.Web3Provider(window.ethereum, chainId)
   };
 
 async function createAsset(){
