@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meganet testnet tokens panel</title>
+    <title>Tokens panel</title>
     <link rel = "stylesheet" href = "style.css">
     <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js"
         type="application/javascript"></script>
@@ -16,8 +16,10 @@
     <p><a href="/rockPaperScissors" target="_blank">Game and faucet</a>, <a href="miners.html" target="_blank">Go to miners</a></p>
 <h2>Switch network</h2>
 <form>
-<input type="radio" name="network" onclick="switchNetwork(3333)" value="Meganet testnet 2">
-<input type="radio" name="network" onclick="switchNetwork(167005)" value="Taiko testnet">
+<label for="id3333">Meganet testnet</label>
+<input type="radio" name="network" id="id3333" onclick="switchNetwork(3333)" value="Meganet testnet 2">
+<label for="id167005">Taiko testnet</label>
+<input type="radio" name="network" id="id167005" onclick="switchNetwork(167005)" value="Taiko testnet">
 </form>
     <div>
         <h2>Create token</h2>
