@@ -428,6 +428,7 @@ await window.ethereum.request({
 	  params: [{ chainId: targetNetworkId }],
 	});
 chain_id = chainId;
+window.alert(chain_id);
   };
 
 async function createAsset(){
