@@ -2,6 +2,12 @@ const contracts = {
 	"3333": "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
 	"167005": "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
 }
+
+const explorers = {
+	"3333": "https://scan.testnet.metagarden.io",
+	"167005": "https://explorer.test.taiko.xyz"
+}
+
 var chain_id = "3333";
 
 const contractABI = [
@@ -421,7 +427,7 @@ const checkNetwork = async (targetNetworkId) => {
 
 const switchNetwork = async (chainId) => {
 	chain_id = chainId.toString();
-const targetNetworkId = '0x' + chainId.toString(16);
+const targetNetworkId = ethers.utils.hexValue(chainId);
 	const network_status = await checkNetwork(targetNetworkId);
 	if (network_status === true) return;
 await window.ethereum.request({
@@ -450,7 +456,7 @@ if (typeof res.events[0] === 'undefined') return;
 	let resultLog = document.getElementById("resultLog");
     resultLog.innerHTML = `<h3>Token was created.</h3>
 <p>Address: ${tokenAddress}:<br>
-<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}" target="_blank">Go to mint</a></p>`;
+<a href="${explorers[chain_id]}/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/#address=${tokenAddress}" target="_blank">Go to mint</a></p>`;
 }
 
 async function mintToken() {
