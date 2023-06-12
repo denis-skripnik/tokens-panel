@@ -438,7 +438,7 @@ async function createAsset(){
 	let maxSupplyInETH = document.getElementById("max_supply").value;
 	let startSupplyInWei = ethers.utils.parseEther(startSupplyInETH.toString())
 	let maxSupplyInWei = ethers.utils.parseEther(maxSupplyInETH.toString())
-
+window.alert(chain_id);
 	contractAddress = conf[chain_id].contractAddress;
 	const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
