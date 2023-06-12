@@ -2,7 +2,7 @@ const contracts = {
 	"3333": "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
 	"167005": "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
 }
-var chain_id = 3333;
+var chain_id = "3333";
 
 const contractABI = [
 	{
@@ -420,14 +420,14 @@ const checkNetwork = async (targetNetworkId) => {
   };
 
 const switchNetwork = async (chainId) => {
-	const targetNetworkId = '0x' + chainId.toString(16);
+	chain_id = chainId.toString();
+const targetNetworkId = '0x' + chainId.toString(16);
 	const network_status = await checkNetwork(targetNetworkId);
 	if (network_status === true) return;
 await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-chain_id = chainId.toString();
   };
 
 async function createAsset(){
