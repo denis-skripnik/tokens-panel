@@ -389,7 +389,7 @@ const tokenAbi = [
 	}
 ]; // Token ABI.
 
-var provider = new ethers.providers.Web3Provider(window.ethereum, parseInt(chain_id))
+var provider = new ethers.providers.Web3Provider(window.ethereum, "any")
 let signer;
 let signerAddress;
 const event = "TokenCreated";
