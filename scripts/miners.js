@@ -504,7 +504,7 @@ const minerAbi = [
 	}
 ]; // Token ABI.
 
-const provider = new ethers.providers.Web3Provider(window.ethereum, 3333)//ChainID 97 Meganet testnet
+var provider = new ethers.providers.Web3Provider(window.ethereum, "any")
 let signer;
 let signerAddress;
 let contract;
