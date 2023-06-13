@@ -1,4 +1,21 @@
-const contractAddress = "0xF4f212ebD63864726e6A666b1B6d9368E38086C7";
+const contracts = {
+	"3333": "0xF4f212ebD63864726e6A666b1B6d9368E38086C7",
+	"167005": "0x7CD36Ca6eCB350FA776d55b7F204B4B6489E9e6E",
+	"84531": "0x20543ab6d8a90abb0b9402bf1e83858979bbce94",
+	"534353": "0x5c900a3A5ECffcd7cceC923BD3a9f357234bc2b5",
+	"59140": "0x4bf80511218bcd0dae7c845fe73901916ef80519"
+}
+
+const explorers = {
+	"3333": "https://scan.testnet.metagarden.io",
+	"167005": "https://explorer.test.taiko.xyz",
+	"84531": "https://goerli.basescan.org",
+	"534353": "https://blockscout.scroll.io",
+	"59140": "https://goerli.lineascan.build"
+}
+
+var chain_id = "3333";
+
 const contractABI = [
 	{
 		"anonymous": false,
@@ -508,9 +525,7 @@ provider.send("eth_requestAccounts", []).then(()=>{
 }
 )
 
-const targetNetworkId = '0xd05';
-
-const checkNetwork = async () => {
+const checkNetwork = async (targetNetworkId) => {
 	if (window.ethereum) {
 	  const currentChainId = await window.ethereum.request({
 		method: 'eth_chainId',
@@ -523,21 +538,19 @@ const checkNetwork = async () => {
 	}
   };
 
-const switchNetwork = async () => {
-	const network_status = await checkNetwork();
+const switchNetwork = async (chainId) => {
+	chain_id = chainId.toString();
+const targetNetworkId = ethers.utils.hexValue(chainId);
+	const network_status = await checkNetwork(targetNetworkId);
 	if (network_status === true) return;
-	await window.ethereum.request({
+await window.ethereum.request({
 	  method: 'wallet_switchEthereumChain',
 	  params: [{ chainId: targetNetworkId }],
 	});
-	// refresh
-	window.location.reload();
+	provider = new ethers.providers.Web3Provider(window.ethereum, chainId)
   };
 
-switchNetwork();
-
-async function createMiner(){
-	await switchNetwork();
+  async function createMiner(){
 	let name = document.getElementById("name").value;
 	let symbol = document.getElementById("symbol").value;
 	symbol = symbol.toUpperCase();
@@ -549,6 +562,8 @@ async function createMiner(){
 	let totalMiners = parseInt(document.getElementById("totalMiners").value);
 	let fearstPriceInWei = ethers.utils.parseEther(fearstPriceInETH.toString())
 	let rewardPerDayInWEI = ethers.utils.parseEther(rewardPerDayInETH.toString())
+	contractAddress = contracts[chain_id];
+	const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
     let result = await contract.createMiner(name, symbol, rewardTokenAddress, fearstPriceInWei, increment, totalDays, rewardPerDayInWEI, totalMiners);
     const res = await result.wait();
@@ -558,7 +573,7 @@ if (typeof res.events[0] === 'undefined') return;
 	let resultLog = document.getElementById("resultLog");
     resultLog.innerHTML = `<h3>Miner was created.</h3>
 <p>Address: ${tokenAddress}:<br>
-<a href="https://scan.testnet.metagarden.io/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/miners.html#address=${tokenAddress}" target="_blank">Go to mint and get rewards</a></p>`;
+<a href="${explorers[chain_id]}/address/${tokenAddress}" target="_blank">Block-explorer</a>, <a href="/tokens-panel/miners.html#address=${tokenAddress}" target="_blank">Go to mint and get rewards</a></p>`;
 }
 
 async function mintMiner() {

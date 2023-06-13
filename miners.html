@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meganet testnet tokens Miners</title>
+    <title>Tokens Miners</title>
     <link rel = "stylesheet" href = "style.css">
     <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js"
         type="application/javascript"></script>
@@ -14,8 +14,21 @@
 <body>
     <h1> Tokens Miners</h1>
     <p><a href="/" target="_blank">Panel</a>, <a href="/rockPaperScissors"" target="_blank">Game and faucet</a></p>
+    <h2>1. Select network</h2>
+<form>
+<label for="id3333">Meganet testnet</label>
+<input type="radio" name="network" id="id3333" onclick="switchNetwork(3333)" value="Meganet testnet 2">
+<label for="id167005">Taiko testnet</label>
+<input type="radio" name="network" id="id167005" onclick="switchNetwork(167005)" value="Taiko testnet">
+<label for="id84531">Base Goerli</label>
+<input type="radio" name="network" id="id84531" onclick="switchNetwork(84531)" value="Base Goerli">
+<label for="id534353">Scroll Alpha Testnet</label>
+<input type="radio" name="network" id="id534353" onclick="switchNetwork(534353)" value="Scroll Alpha Testnet">
+<label for="id59140">Linea testnet</label>
+<input type="radio" name="network" id="id59140" onclick="switchNetwork(59140)" value="Linea Testnet">
+</form>
     <div>
-        <h2>Create Miner</h2>
+<h2>2. Create Miner</h2>
         <p>Name</p>
         <input type="text" id = "name">
         <p>Symbol</p>

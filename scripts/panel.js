@@ -1,11 +1,17 @@
 const contracts = {
 	"3333": "0xc5076e7470e7bb1B16A84142F79F6fCbA83fb9fD",
-	"167005": "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21"
+	"167005": "0x9257437b986b989EE791331a69Dfb7Bd1aEFeF21",
+	"84531": "0x389c942d852dd1831583101897f798608c16cf5e",
+	"534353": "0x3341C1e8Fd8c38D738AD984b9b4EEFc2e48277f5",
+	"59140": "0x516cBa9c3E2a0968748666CA858578c4E4BC839A"
 }
 
 const explorers = {
 	"3333": "https://scan.testnet.metagarden.io",
-	"167005": "https://explorer.test.taiko.xyz"
+	"167005": "https://explorer.test.taiko.xyz",
+	"84531": "https://goerli.basescan.org",
+	"534353": "https://blockscout.scroll.io",
+	"59140": "https://explorer.goerli.linea.build"
 }
 
 var chain_id = "3333";
