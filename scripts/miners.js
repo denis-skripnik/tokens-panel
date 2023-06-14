@@ -3,7 +3,9 @@ const contracts = {
 	"167005": "0x7CD36Ca6eCB350FA776d55b7F204B4B6489E9e6E",
 	"84531": "0x20543ab6d8a90abb0b9402bf1e83858979bbce94",
 	"534353": "0x5c900a3A5ECffcd7cceC923BD3a9f357234bc2b5",
-	"59140": "0x4bf80511218bcd0dae7c845fe73901916ef80519"
+	"59140": "0x4bf80511218bcd0dae7c845fe73901916ef80519",
+	"7001": "0xcc10645534c0601c03f0a06d56071db67207aeda",
+	"1101": "0xc7e932d75f9c317c8900d4c21187b6a1961cfe55"
 }
 
 const explorers = {
@@ -11,7 +13,9 @@ const explorers = {
 	"167005": "https://explorer.test.taiko.xyz",
 	"84531": "https://goerli.basescan.org",
 	"534353": "https://blockscout.scroll.io",
-	"59140": "https://goerli.lineascan.build"
+	"59140": "https://goerli.lineascan.build",
+	"7001": "https://explorer.zetachain.com",
+	"1101": "https://zkevm.polygonscan.com"
 }
 
 var chain_id = "3333";
