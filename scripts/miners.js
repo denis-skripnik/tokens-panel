@@ -1,5 +1,5 @@
 const contracts = {
-	"3333": "0xF4f212ebD63864726e6A666b1B6d9368E38086C7",
+	"9999": "0xC7E932d75f9C317c8900D4c21187b6a1961CFe55",
 	"167005": "0x7CD36Ca6eCB350FA776d55b7F204B4B6489E9e6E",
 	"84531": "0x20543ab6d8a90abb0b9402bf1e83858979bbce94",
 	"534353": "0x5c900a3A5ECffcd7cceC923BD3a9f357234bc2b5",
@@ -10,7 +10,7 @@ const contracts = {
 }
 
 const explorers = {
-	"3333": "https://scan.testnet.metagarden.io",
+	"9999": "https://scan.metagarden.io",
 	"167005": "https://explorer.test.taiko.xyz",
 	"84531": "https://goerli.basescan.org",
 	"534353": "https://blockscout.scroll.io",
@@ -20,7 +20,7 @@ const explorers = {
 	"9001": "https://escan.live"
 }
 
-var chain_id = "3333";
+var chain_id = "9999";
 
 const contractABI = [
 	{
